@@ -63,7 +63,7 @@ jobs:
 
       - name: Run tests
         working-directory: frontend
-        run: npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage
+        run: npm run test -- --watch=false --browsers=ChromeHeadless --coverage
 
       - name: SonarCloud analysis
         uses: SonarSource/sonarcloud-github-action@master
