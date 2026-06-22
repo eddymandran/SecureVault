@@ -108,8 +108,8 @@ pipeline {
             echo "⚠️  Build instable — des tests ont échoué"
         }
         cleanup {
-            // Nettoie le workspace pour ne pas saturer le disque Jenkins
-            cleanWs()
-        }
+            node('built-in') {   // ← contexte node explicite pour cleanWs
+                cleanWs()
+            }
     }
 }
