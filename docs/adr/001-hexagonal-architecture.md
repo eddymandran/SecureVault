@@ -1,7 +1,7 @@
 # ADR-001 : Architecture Hexagonale
 
 ## Statut
-Accepté
+Accepté — Implémenté le 22/06/2026
 
 ## Contexte
 SecureVault est une application de gestion de secrets et credentials
@@ -29,3 +29,33 @@ Structure retenue :
 ✅ On peut remplacer PostgreSQL ou Spring sans toucher au domaine  
 ⚠️ Plus de fichiers et de couches qu'une architecture en couches classique  
 ⚠️ Courbe d'apprentissage initiale plus élevée
+
+## Structure détaillée
+
+```mermaid
+flowchart TD
+    subgraph DOMAIN["🔵 Domain — zéro dépendance externe"]
+        Model["model/\nVault.java"]
+        PortIn["port/in/\nVaultUseCase.java"]
+        PortOut["port/out/\nVaultRepository.java"]
+        Service["service/\nVaultService.java"]
+        Service --> Model
+        Service --> PortIn
+        Service --> PortOut
+    end
+
+    subgraph APPLICATION["🟡 Application — orchestration"]
+        AppService["VaultApplicationService.java"]
+    end
+
+    subgraph INFRASTRUCTURE["🟠 Infrastructure — détails techniques"]
+        Persistence["persistence/\nVaultJpaEntity\nVaultJpaRepository\nVaultPersistenceAdapter"]
+        Web["web/\nVaultController\nCreateVaultRequest\nVaultResponse"]
+    end
+
+    APPLICATION --> DOMAIN
+    INFRASTRUCTURE --> DOMAIN
+    Web --> APPLICATION
+```
+
+**Règle absolue** : les flèches vont toujours vers le Domain, jamais dans l'autre sens.
