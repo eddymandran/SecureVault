@@ -111,5 +111,6 @@ pipeline {
             node('built-in') {   // ← contexte node explicite pour cleanWs
                 cleanWs()
             }
+        }
     }
 }
