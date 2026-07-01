@@ -33,6 +33,7 @@ public class Vault {
 
     private Vault(UUID id, UUID ownerId, String name,
                   String description, Instant createdAt, Instant updatedAt) {
+        validateName(name);
         this.id = id;
         this.ownerId = ownerId;
         this.name = name;
@@ -42,13 +43,28 @@ public class Vault {
     }
 
     // Comportement métier
-    public void rename(String newName) {
-        if (newName == null || newName.isBlank()) {
+
+    private static void validateName(String name) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Vault name cannot be blank");
         }
+    }
+
+    public void rename(String newName) {
+        validateName(newName);
         this.name = newName;
         this.updatedAt = Instant.now();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Vault other)) return false;
+        return id.equals(other.id);
+    }
+
+    @Override
+    public int hashCode() { return id.hashCode(); }
 
     // Getters uniquement — pas de setters publics
     public UUID getId() { return id; }
@@ -57,4 +73,5 @@ public class Vault {
     public String getDescription() { return description; }
     public Instant getCreatedAt() { return createdAt; }
     public Instant getUpdatedAt() { return updatedAt; }
+
 }
