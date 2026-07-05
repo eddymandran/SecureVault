@@ -20,7 +20,7 @@
     <properties>
         <java.version>21</java.version>
         <sonar.organization>eddymandran-1</sonar.organization>
-        <testcontainers.version>1.20.4</testcontainers.version>
+        <testcontainers.version>1.21.3</testcontainers.version>
     </properties>
 
     <dependencyManagement>
