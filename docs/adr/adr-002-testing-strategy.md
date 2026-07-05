@@ -31,3 +31,9 @@ Chaque test suit obligatoirement la structure Arrange / Act / Assert :
 ✅ Tests unitaires démarrent en millisecondes  
 ✅ Rapports JUnit lisibles dans Jenkins  
 ✅ Conventions uniformes sur tout le projet
+
+---
+## Mise à jour (juillet 2026)
+
+Cette ADR couvre la stratégie des tests unitaires (pattern AAA, domaine pur sans Spring).
+Pour la stratégie des tests d'intégration (Testcontainers, base de données réelle), voir **ADR-003 : Tests d'intégration avec Testcontainers**.
