@@ -1,3 +1,6 @@
 spring:
   application:
     name: backend
+  jpa:
+    hibernate:
+      dll-auto: create-drop
