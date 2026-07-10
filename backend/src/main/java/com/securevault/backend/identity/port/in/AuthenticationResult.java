@@ -1,4 +1,4 @@
-package com.securevault.backend.vault.port.in;
+package com.securevault.backend.identity.port.in;
 
 import java.time.Instant;
 
