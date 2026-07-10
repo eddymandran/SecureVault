@@ -1,7 +1,9 @@
 package com.securevault.backend.identity.domain.exception;
 
-public class AccountDisabledException extends RuntimeException {
-  public AccountDisabledException(String message) {
-    super(message);
-  }
+import com.securevault.backend.shared.domain.exception.DomainException;
+
+public class AccountDisabledException extends DomainException {
+    public AccountDisabledException() {
+        super("Account disabled");
+    }
 }
