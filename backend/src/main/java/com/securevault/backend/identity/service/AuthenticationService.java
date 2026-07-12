@@ -33,12 +33,25 @@ public class AuthenticationService implements
     private static final Duration ACCESS_TOKEN_TTL = Duration.ofMinutes(10);
     private static final Duration REFRESH_TOKEN_TTL = Duration.ofDays(30);
 
+    private static final String DUMMY_PASSWORD_HASH =
+            "$2a$12$C6UzMDM.H6dfI/f/IKcEeO2koYbEaCz0/xJ.ATlwBRB3B6yPeaXBu";
+    // Hash BCrypt factice — sert uniquement à faire consommer le même temps CPU
+    // à passwordHasher.matches() quand l'utilisateur n'existe pas.
+    // Ce n'est PAS un secret, juste un leurre pour égaliser le timing.
+
     @Override
     public AuthenticationResult authenticate(String email, String rawPassword) {
-        User user = userRepository.findByEmail(new Email(email))
-                .orElseThrow(InvalidCredentialsException::new);
+        User user = userRepository.findByEmail(new Email(email)).orElse(null);
 
-        if (!user.verifyPassword(rawPassword, passwordHasher)) {
+        boolean passwordMatches;
+        if (user != null) {
+            passwordMatches = user.verifyPassword(rawPassword, passwordHasher);
+        } else {
+            passwordHasher.matches(rawPassword, DUMMY_PASSWORD_HASH); // résultat ignoré, coût CPU consommé
+            passwordMatches = false;
+        }
+
+        if (user == null || !passwordMatches) {
             throw new InvalidCredentialsException();
         }
 
