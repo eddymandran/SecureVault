@@ -424,8 +424,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-#Secrets
+# Secrets
 application-local.properties
 application-secrets.yml
 
-# End of https://www.toptal.com/developers/gitignore/api/java,maven,intellij,visualstudiocode,node,angular,macos,windows,linux
+# Exception : documentation des variables d'environnement (fichier public, sans valeurs réelles)
+!.env.example
