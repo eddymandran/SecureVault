@@ -6,6 +6,10 @@ Application web de gestion de secrets et de credentials (mots de passe, clés AP
 
 Le choix du sujet, la gestion de secrets, est volontaire : il impose une rigueur sécurité de bout en bout (chiffrement, contrôle d'accès, audit des accès). Trois axes travaillés en parallèle : maturité de développement (architecture hexagonale, tests, clean code), pratiques DevOps/Cloud (CI/CD, conteneurisation, Azure), et sécurité applicative (chiffrement, gestion des secrets, OWASP).
 
+## 🤝 Méthode de travail
+
+Projet développé en solo, en dialogue constant avec Claude (Anthropic) : cadrage du sujet, choix de stack, options d'architecture, revue de code, débogage, rédaction de documentation. Les choix retenus sont validés par la mise en pratique — implémentation, tests, CI/CD — avant merge, et documentés via ADR (voir `ADR-007`) au même titre que les autres décisions du projet.
+
 ## 🧱 État d'avancement
 
 **✅ En place**
