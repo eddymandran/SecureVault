@@ -36,4 +36,4 @@ Projet développé en solo, en dialogue constant avec Claude (Anthropic) : cadra
 
 ## 📫 Contact
 
-[LinkedIn](https://www.linkedin.com/in/eddymandran/) · eddy.mandran@gmail.com
+[LinkedIn](https://www.linkedin.com/in/eddymandran/) · dev.eddy.mdn@proton.me
